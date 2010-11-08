@@ -1,0 +1,3 @@
+XT_SHELL oracle package
+For Executing shell commands with timeout
+Returns stdout and stderr as table of varchar2
