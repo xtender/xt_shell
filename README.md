@@ -1,6 +1,7 @@
 XT_SHELL oracle package
 =============
-For Executing shell commands with timeout
+
+For Executing shell commands with timeout. 
 Returns stdout and stderr as table of varchar2
 
 Functions
@@ -16,13 +17,16 @@ Input params:
 
 Installation
 -------
+
 Execute scripts in this order:
+
 * @varchar2_table.tps
 * @xt_shell.jsp
 * @XT_SHELL.spc
 
 Examples
 -------
+
 ### Pl/SQL block:
 
     declare
