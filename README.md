@@ -11,9 +11,10 @@ Functions
 
 Returns varchar2 collection (varchar2_table)
 
-Input params: 
-*** pCommand - string with command 
-*** timeout - timeout after which command interrupts
+Input params
+
+* pCommand - string with command 
+* timeout - timeout after which command interrupts
 
 Installation
 -------
