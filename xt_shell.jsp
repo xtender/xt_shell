@@ -21,15 +21,19 @@ import java.lang.System.*;
 /* Main class */
 public class XT_SHELL
 {
-//  public static final int TIMEOUT=5000;
-  public static final String ENCODING="UTF-8";
+// uncomment for utf or change to your locale
+//  public static final String ENCODING="UTF-8";
+// for windows
+//  public static final String ENCODING="CP1252";
+// for russian windows
+  public static final String ENCODING="CP1251";
 /**
  * Function shellExec
  * @param String shell command
  * @return String
  */
   public static java.lang.String shellExec (String command,int TIMEOUT)
-    throws SQLException 
+    throws SQLException
   {
       Worker worker = new Worker(command);
       try{
@@ -63,10 +67,10 @@ public class XT_SHELL
  * @return String
  */
   public static oracle.sql.ARRAY SQLshellExec (String command,int TIMEOUT)
-    throws SQLException 
+    throws SQLException
   {
     String shellResult = shellExec(command,TIMEOUT);
-    Connection conn = new OracleDriver().defaultConnection();         
+    Connection conn = new OracleDriver().defaultConnection();
          ArrayDescriptor descriptor =
             ArrayDescriptor.createDescriptor("VARCHAR2_TABLE", conn );
     oracle.sql.ARRAY outArray = new oracle.sql.ARRAY(descriptor,conn,shellResult.split("\n"));
@@ -83,7 +87,7 @@ public class XT_SHELL
     private OutputStream stdin = null;
     private InputStream stderr = null;
     private InputStream stdout = null;
-    
+
     /**
      * Constructor
      */
@@ -92,28 +96,28 @@ public class XT_SHELL
       this.result = new StringBuffer();
       this.exit = -1;
     }
-    
+
     /**
      * main method - run
      */
     public void run() {
-      try { 
+      try {
           process = Runtime.getRuntime().exec(command);
 
           stdin = process.getOutputStream ();
           stderr = process.getErrorStream ();
           stdout = process.getInputStream ();
-          
-          BufferedReader brCleanUp = 
+
+          BufferedReader brCleanUp =
                          new BufferedReader (
-                             new InputStreamReader (stdout,"UTF-8"));
+                             new InputStreamReader (stdout,ENCODING));
           String line;
           while ((line = brCleanUp.readLine ()) != null) {
             result.append(line).append("\n");
           }
           brCleanUp.close();
-          
-          brCleanUp = 
+
+          brCleanUp =
             new BufferedReader (new InputStreamReader (stderr,ENCODING));
           while ((line = brCleanUp.readLine ()) != null) {
             result.append("STDERR:\t").append(line).append("\n");
@@ -132,8 +136,8 @@ public class XT_SHELL
         exit = 0;
         result.append("Exception:").append(e.getMessage());
         return;
-      } 
-    }  
+      }
+    }
   }
 }
 /
