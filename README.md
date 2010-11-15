@@ -1,7 +1,7 @@
 XT_SHELL oracle package
 =============
 
-For Executing shell commands with timeout. 
+For Executing shell commands with timeout(milliseconds).
 Returns stdout and stderr as table of varchar2
 
 Functions
@@ -14,12 +14,12 @@ Returns varchar2 collection (varchar2_table)
 Input params
 
 * pCommand - string with command 
-* timeout - timeout after which command interrupts
+* timeout - timeout after which command interrupts(milliseconds)
 
 Installation
 -------
 
-Execute scripts in this order:
+Change to your locale in xt_shell.jsp(lines #24-27) and execute scripts in this order:
 
 * @varchar2_table.tps
 * @xt_shell.jsp
