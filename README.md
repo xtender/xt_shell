@@ -39,6 +39,6 @@ Examples
       end loop;
     end;
 
-### DML:
+### SQL:
 
     select * from table(xt_shell.shell_exec('/bin/ls -l',100))
